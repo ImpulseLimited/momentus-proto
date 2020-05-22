@@ -29,10 +29,10 @@ SOUND_FOLDER = 'sounds'
 # ingame settings
 DUNGEON_SIZE = (5, 5)
 SCROLLSPEED = 8
-SCROLLSPEED_MENU = 6
+SCROLLSPEED_MENU = 14
 FPS = 60
 FONT = path.join(FONT_FOLDER, 'slkscr.TTF')
-TITLE = ('Exeneva - Bullet Hell Shooter')
+TITLE = ('Momentus Proto')
 
 SFX_VOL = 0.2
 MU_VOL = 0.5
