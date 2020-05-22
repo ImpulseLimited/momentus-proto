@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2020.03.18" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="40" tileheight="40" infinite="0" nextlayerid="3" nextobjectid="31">
+ <tileset firstgid="1" source="NewTiles.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="20" height="15">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup id="2" name="Object">
+  <object id="9" name="wall" x="329.929" y="-14.3969" width="147.568" height="22.7951"/>
+  <object id="10" name="wall" x="-23.9949" y="241.68" width="29.9936" height="114.912"/>
+  <object id="11" name="wall" x="790.631" y="238.214" width="25.1946" height="124.51"/>
+  <object id="13" name="wall" x="327.53" y="587.874" width="140.37" height="35.9923"/>
+  <object id="21" name="wall" x="758.667" y="0" width="44.6667" height="242"/>
+  <object id="22" name="wall" x="758.333" y="358" width="52" height="242.667"/>
+  <object id="23" name="wall" x="-2.66667" y="558" width="328.667" height="50"/>
+  <object id="24" name="wall" x="-4.66667" y="-0.666667" width="47.3333" height="246.667"/>
+  <object id="25" name="wall" x="0" y="-0.33333" width="330" height="44"/>
+  <object id="27" name="wall" x="467.333" y="558" width="288.667" height="44"/>
+  <object id="28" name="wall" x="-1.66667" y="349.333" width="44" height="209.333"/>
+  <object id="30" name="wall" x="478.31" y="-0.465149" width="330" height="44"/>
+ </objectgroup>
+</map>
