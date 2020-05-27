@@ -1,4 +1,4 @@
-import Integrate
+import GameFlow
 import pygame as pg
 import traceback
 
@@ -6,7 +6,7 @@ import traceback
 pg.init()
 
 if __name__ == '__main__':
-    g = Integrate.Game()
+    g = GameFlow.Game()
     try:
         while g.running:
             g.new()
