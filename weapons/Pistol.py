@@ -20,10 +20,9 @@ class Pistol(Weapon):
         self.type = 'Pistol'
         super().__init__(game, player)
         self.fired = False
-        self.cooldown = 15
+        self.cooldown = 30
         self.hit_rect = pygame.Rect((0, 0), (int(10),int(10)))
-        self.soundlist = [self.game.soundLoader.get['Laser02'],self.game.soundLoader.get['Laser03'],
-                          self.game.soundLoader.get['Laser04'],self.game.soundLoader.get['Laser05']]
+        self.soundlist = [self.game.soundLoader.get['laserPistolShot']]
         
     def use(self):
         """Pistol class method to use the pistol. 

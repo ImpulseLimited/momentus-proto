@@ -24,18 +24,17 @@ from bullets.PlayerPistolBullet import PlayerPistolBullet
 from bullets.PlayerMachinegunBullet import PlayerMachinegunBullet
 from bullets.EnemyProjectile import EnemyProjectile
 from bullets.EnemyBullet import EnemyBullet
-from bullets.MiniBossBullet import MiniBossBullet
-from bullets.BossBullet import BossBullet
+from bullets.EnemyPistolBullet import EnemyPistolBullet
+from bullets.EnemyMachineGunBullet import EnemyMachineGunBullet
 from Inventory import Inventory
 from Item import Item
 from weapons.Weapon import Weapon
 from weapons.Sword import Sword
 from weapons.Pistol import Pistol
 from weapons.MachineGun import MachineGun
-from enemies.Enemy import Enemy
 from enemies.SwordEnemy import SwordEnemy
-from enemies.MiniBoss import MiniBoss
-from enemies.Boss import Boss
+from enemies.PistolEnemy import PistolEnemy
+from enemies.MachineGunEnemy import MachineGunEnemy
 
 # load a dictionary of GameFlow.py namespace
 module_dict = sys.modules[__name__].__dict__
@@ -66,6 +65,7 @@ class Game:
         pygame.key.set_repeat(10, cfg.KEY_DELAY)
     
         self.actual_screen = pygame.display.set_mode((cfg.S_WIDTH, cfg.S_HEIGHT))
+        #self.actual_screen = pygame.display.set_mode((cfg.S_WIDTH, cfg.S_HEIGHT), pygame.FULLSCREEN)
         
         self.screen = pygame.Surface((cfg.WIDTH, cfg.HEIGHT))
 
@@ -291,13 +291,13 @@ class Game:
             if rect.colliderect(game.player.hit_rect):
                 # player is far enough in the room to shut the doors
                 room.shut_doors()
-                game.soundLoader.get['shut'].play()
+                game.soundLoader.get['roomLocked'].play()
                 
         else:
             if len(game.enemies) == 0:
                 # if all enemies are defeated, open the doors
                 room.open_doors()
-                game.soundLoader.get['fanfare1'].play()
+                game.soundLoader.get['roomCleared'].play()
                 room.cleared = True
 
 
@@ -452,8 +452,7 @@ class Game:
         
             self.inventory.update()
             # check for room transitions on screen exit (every frame)
-            self.direction, self.new_room, self.new_pos = self.screenWrap(
-                    self.player, self.dungeon)
+            self.direction, self.new_room, self.new_pos = self.screenWrap(self.player, self.dungeon)
 
             if self.direction == UP:
                 self.dircheck = UP

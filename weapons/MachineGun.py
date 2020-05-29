@@ -17,7 +17,7 @@ class MachineGun(Weapon):
         self.type = 'Mbullet'
         super().__init__(game, player)
         self.fired = False
-        self.cooldown = 2
+        self.cooldown = 10
         self.check = False
         
         
@@ -34,7 +34,7 @@ class MachineGun(Weapon):
                 self.lastdir = self.player.lastdir
                 PlayerMachinegunBullet(self.game, self, self.rect.center)
                 self.player.mana += 1
-                self.game.soundLoader.get['magic1'].play()
+                self.game.soundLoader.get['machineGunShot'].play()
                 self.fired = True
 
                 

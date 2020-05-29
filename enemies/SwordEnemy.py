@@ -3,6 +3,7 @@ import random
 
 import Config as cfg
 from enemies.Enemy import Enemy
+from weapons.Sword import Sword
 
 UP = (0, -1)
 DOWN = (0, 1)
@@ -11,7 +12,7 @@ RIGHT = (1, 0)
 
 class SwordEnemy(Enemy):
     """This class is derived from Enemy class and 
-       contains settings for a simple enemy.
+       contains settings for a SwordEnemy.
 
     """
     def __init__(self, game, pos, *args, **kwargs):
@@ -22,7 +23,7 @@ class SwordEnemy(Enemy):
             pos (tuple length 2) : position of the player (x,y).
 
         """
-        self.name = 'Enemy'
+        self.name = 'SwordEnemy'
         self.image_strip = game.imageLoader.enemy_img[self.name]
         self.walk_frames = {
             UP: [self.image_strip[0][0],self.image_strip[0][1],self.image_strip[0][2],self.image_strip[0][3]],
@@ -49,6 +50,7 @@ class SwordEnemy(Enemy):
         self.shoot_time = 1.5 * cfg.FPS
         self.stun_timer = 0
         self.attack_update = 0
+        self.SwordWeapon = Sword(self.game, self)
         
     def update(self):
         """SwordEnemy class method to update.

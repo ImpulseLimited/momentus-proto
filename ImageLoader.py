@@ -121,17 +121,17 @@ class ImageLoader:
         
         plyr_mv_left_pist_imgs = []
         for i in plyr_mv_up_pist_imgs:
-            a = pygame.transform.rotate(i,90)
+            a = pygame.transform.rotozoom(i,90,1)
             plyr_mv_left_pist_imgs.append(a)
 
         plyr_mv_right_pist_imgs = []
         for i in plyr_mv_up_pist_imgs:
-            a = pygame.transform.rotate(i,-90)
+            a = pygame.transform.rotozoom(i,-90,1)
             plyr_mv_right_pist_imgs.append(a)
             
         plyr_mv_down_pist_imgs = []
         for i in plyr_mv_up_pist_imgs:
-            a = pygame.transform.rotate(i,-180)
+            a = pygame.transform.rotozoom(i,-180,1)
             plyr_mv_down_pist_imgs.append(a)
 
         # Loading assets for player moving with machine gun
@@ -139,15 +139,15 @@ class ImageLoader:
         
         plyr_mv_left_machine_imgs = []
         for i in plyr_mv_up_machine_imgs:
-            a = pygame.transform.rotate(i,90)
+            a = pygame.transform.rotozoom(i,90,1)
             plyr_mv_left_machine_imgs.append(a)
         plyr_mv_right_machine_imgs = []
         for i in plyr_mv_up_machine_imgs:
-            a = pygame.transform.rotate(i,-90)
+            a = pygame.transform.rotozoom(i,-90,1)
             plyr_mv_right_machine_imgs.append(a)
         plyr_mv_down_machine_imgs = []
         for i in plyr_mv_up_machine_imgs:
-            a = pygame.transform.rotate(i,-180)
+            a = pygame.transform.rotozoom(i,-180,1)
             plyr_mv_down_machine_imgs.append(a)
 
         # setting up player_img attribute with image lists
@@ -173,17 +173,17 @@ class ImageLoader:
         
         enemy_mv_left_pist_imgs = []
         for i in enemy_mv_up_pist_imgs:
-            a = pygame.transform.rotate(i,90)
+            a = pygame.transform.rotozoom(i,90,1)
             enemy_mv_left_pist_imgs.append(a)
             
         enemy_mv_right_pist_imgs = []
         for i in enemy_mv_up_pist_imgs:
-            a = pygame.transform.rotate(i,-90)
+            a = pygame.transform.rotozoom(i,-90,1)
             enemy_mv_right_pist_imgs.append(a)
             
         enemy_mv_down_pist_imgs = []
         for i in enemy_mv_up_pist_imgs:
-            a = pygame.transform.rotate(i,-180)
+            a = pygame.transform.rotozoom(i,-180,1)
             enemy_mv_down_pist_imgs.append(a)
 
         # Loading assets for enemy moving with machine gun
@@ -191,17 +191,17 @@ class ImageLoader:
         
         enemy_mv_left_machine_imgs = []
         for i in enemy_mv_up_machine_imgs:
-            a = pygame.transform.rotate(i,90)
+            a = pygame.transform.rotozoom(i,90,1)
             enemy_mv_left_machine_imgs.append(a)
             
         enemy_mv_right_machine_imgs = []
         for i in enemy_mv_up_machine_imgs:
-            a = pygame.transform.rotate(i,-90)
+            a = pygame.transform.rotozoom(i,-90,1)
             enemy_mv_right_machine_imgs.append(a)
             
         enemy_mv_down_machine_imgs = []
         for i in enemy_mv_up_machine_imgs:
-            a = pygame.transform.rotate(i,-180)
+            a = pygame.transform.rotozoom(i,-180,1)
             enemy_mv_down_machine_imgs.append(a)
 
         # Loading assets for enemy moving with sword
@@ -209,17 +209,17 @@ class ImageLoader:
         
         enemy_mv_left_sword_imgs = []
         for i in enemy_mv_up_sword_imgs:
-            a = pygame.transform.rotate(i,90)
+            a = pygame.transform.rotozoom(i,90,1)
             enemy_mv_left_sword_imgs.append(a)
             
         enemy_mv_right_sword_imgs = []
         for i in enemy_mv_up_sword_imgs:
-            a = pygame.transform.rotate(i,-90)
+            a = pygame.transform.rotozoom(i,-90,1)
             enemy_mv_right_sword_imgs.append(a)
             
         enemy_mv_down_sword_imgs = []
         for i in enemy_mv_up_sword_imgs:
-            a = pygame.transform.rotate(i,-180)
+            a = pygame.transform.rotozoom(i,-180,1)
             enemy_mv_down_sword_imgs.append(a)
 
         # Loading assets for enemy swinging sword
@@ -227,24 +227,24 @@ class ImageLoader:
 
         enemy_swing_left_sword_imgs = []
         for i in enemy_swing_up_sword_imgs:
-            a = pygame.transform.rotate(i,90)
+            a = pygame.transform.rotozoom(i,90,1)
             enemy_swing_left_sword_imgs.append(a)
 
         enemy_swing_right_sword_imgs = []
         for i in enemy_swing_up_sword_imgs:
-            a = pygame.transform.rotate(i,-90)
+            a = pygame.transform.rotozoom(i,-90,1)
             enemy_swing_right_sword_imgs.append(a)
 
         enemy_swing_down_sword_imgs = []
         for i in enemy_swing_up_sword_imgs:
-            a = pygame.transform.rotate(i,-180)
+            a = pygame.transform.rotozoom(i,-180,1)
             enemy_swing_down_sword_imgs.append(a)
             
         # setting up player_img attribute with image lists
         self.enemy_img = {
-            'Boss': [enemy_mv_up_machine_imgs, enemy_mv_down_machine_imgs, enemy_mv_left_machine_imgs, enemy_mv_right_machine_imgs],
-            'MiniBoss':[enemy_mv_up_pist_imgs, enemy_mv_down_pist_imgs, enemy_mv_left_pist_imgs, enemy_mv_right_pist_imgs],
-            'Enemy': [enemy_mv_up_sword_imgs, enemy_mv_down_sword_imgs, enemy_mv_left_sword_imgs, enemy_mv_right_sword_imgs]
+            'MachineGunEnemy': [enemy_mv_up_machine_imgs, enemy_mv_down_machine_imgs, enemy_mv_left_machine_imgs, enemy_mv_right_machine_imgs],
+            'PistolEnemy':[enemy_mv_up_pist_imgs, enemy_mv_down_pist_imgs, enemy_mv_left_pist_imgs, enemy_mv_right_pist_imgs],
+            'SwordEnemy': [enemy_mv_up_sword_imgs, enemy_mv_down_sword_imgs, enemy_mv_left_sword_imgs, enemy_mv_right_sword_imgs]
             }
 
         self.item_anims = { 'sword': enemy_swing_up_sword_imgs,
@@ -274,8 +274,8 @@ class ImageLoader:
         PlayerBullet = pygame.transform.scale(BlueShot, (6, 6))
         MACHINEBullet = pygame.transform.scale(MACHINEShot, (5, 15))
         
-        MiniBossBullet = pygame.transform.scale(PlasmaShot, (20, 20))
-        BossBullet = pygame.transform.scale(PlasmaShot, (40, 40))
+        EnemyPistolBullet = pygame.transform.scale(PlasmaShot, (20, 20))
+        EnemyMachineGunBullet = pygame.transform.scale(PlasmaShot, (40, 40))
         MGun = pygame.image.load(os.path.join(cfg.IMAGE_FOLDER,'guns/MachineGun.png'))
         MGun  = pygame.transform.scale(MGun, (30, 20))
         PGun = pygame.image.load(os.path.join(cfg.IMAGE_FOLDER,'guns/Pistol.png'))
@@ -290,8 +290,8 @@ class ImageLoader:
             'Pbullet': LaserBlue,
             'Mbullet': BlueShot,
             'EnemyBullet' : EnemyBullet,
-            'MiniBossBullet' : LaserRed,
-            'BossBullet' :  BulletRed,
+            'EnemyPistolBullet' : LaserRed,
+            'EnemyMachineGunBullet' :  BulletRed,
             'heart': HeartP,
             'MachineGun' : MGun,
             'Pistol' : PGun,
@@ -364,6 +364,8 @@ class ImageLoader:
         self.solid_img ={ 'block': pygame.image.load(os.path.join(cfg.IMAGE_FOLDER,'tiles/box.png')),
                           'crate': pygame.image.load(os.path.join(cfg.IMAGE_FOLDER,'tiles/explosive tank.png')),
                         }
+        self.solid_img['block'] = pygame.transform.scale(self.solid_img['block'], (40, 40))
+        self.solid_img['crate'] = pygame.transform.scale(self.solid_img['crate'], (36, 36))
 
         self.effects = {'crate_explosion': self.extract_images_from_sprite('others/explosion.png', 32, 32, 0, 7, 150)}
 

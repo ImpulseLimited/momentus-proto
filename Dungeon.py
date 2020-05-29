@@ -279,15 +279,13 @@ class Dungeon:
                         this_room.layout.append({'id': 0, 'name': 'SwordEnemy', 'x': 150, 'y': 150, 'width': 40, 'height': 40})
                         this_room.layout.append({'id': 0, 'name': 'SwordEnemy', 'x': 250, 'y': 150, 'width': 40, 'height': 40})
                         this_room.layout.append({'id': 0, 'name': 'SwordEnemy', 'x': 250, 'y': 250, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'Boss', 'x': 150, 'y': 150, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'Boss', 'x': 250, 'y': 250, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'MiniBoss', 'x': 5 * cfg.TILESIZE, 'y': 5 * cfg.TILESIZE, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'MiniBoss', 'x': 7 * cfg.TILESIZE, 'y': 10 * cfg.TILESIZE, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'MachineGunEnemy', 'x': 150, 'y': 150, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'MachineGunEnemy', 'x': 250, 'y': 250, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'PistolEnemy', 'x': 5 * cfg.TILESIZE, 'y': 5 * cfg.TILESIZE, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'PistolEnemy', 'x': 7 * cfg.TILESIZE, 'y': 10 * cfg.TILESIZE, 'width': 40, 'height': 40})
 
                         self.boss_room = this_room
                         pos = self.boss_room.pos
-                        
-                        print('Endboss is in : ', self.boss_room.pos)
                         endboss =True
 
         
@@ -303,20 +301,20 @@ class Dungeon:
                         dist_2nd_longest = max(dist_2nd_longest, this_room.dist)
 
 
-        # set the second most distant room with single door as the MiniBoss room
-        MiniBoss = False
+        # set the second most distant room with single door as the Pistol room
+        PistolEnemy = False
         for i in range(0, len(self.room_matrix)):
             for j in range(0, len(self.room_matrix[i])):
                 this_room = self.room_matrix[i][j]
-                if not this_room == None and MiniBoss == False:
+                if not this_room == None and PistolEnemy == False:
                     if this_room.dist == dist_2nd_longest and this_room.type != 'endboss' and len(this_room.doors) == 1:
 
-                        this_room.type = 'MiniBoss'
-                        this_room.layout.append({'id': 0, 'name': 'Boss', 'x': 150, 'y': 150, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'Boss', 'x': 250, 'y': 250, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'MiniBoss', 'x': 5 * cfg.TILESIZE, 'y': 5 * cfg.TILESIZE, 'width': 40, 'height': 40})
-                        this_room.layout.append({'id': 0, 'name': 'MiniBoss', 'x': 7 * cfg.TILESIZE, 'y': 10 * cfg.TILESIZE, 'width': 40, 'height': 40})
-                        MiniBoss = True
+                        this_room.type = 'PistolEnemy'
+                        this_room.layout.append({'id': 0, 'name': 'MachineGunEnemy', 'x': 150, 'y': 150, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'MachineGunEnemy', 'x': 250, 'y': 250, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'PistolEnemy', 'x': 5 * cfg.TILESIZE, 'y': 5 * cfg.TILESIZE, 'width': 40, 'height': 40})
+                        this_room.layout.append({'id': 0, 'name': 'PistolEnemy', 'x': 7 * cfg.TILESIZE, 'y': 10 * cfg.TILESIZE, 'width': 40, 'height': 40})
+                        PistolEnemy = True
             
         
         # setting enemies in other rooms
@@ -333,10 +331,10 @@ class Dungeon:
                 Check_List.append((int(x),int(y)))
                 x = Check_List[i][0]
                 y = Check_List[i][1]
-                if this_room.type != 'endboss' and this_room.type != 'MiniBoss':
-                        this_room.layout.append({'id': 0, 'name': 'MiniBoss', 'x': x, 'y': y, 'width': 40, 'height': 40})
+                if this_room.type != 'endboss' and this_room.type != 'PistolEnemy':
+                        this_room.layout.append({'id': 0, 'name': 'PistolEnemy', 'x': x, 'y': y, 'width': 40, 'height': 40})
                         if room_count > 2:
-                            this_room.layout.append({'id': 0, 'name': 'Boss', 'x': x+40, 'y': y+40, 'width': 40, 'height': 40})
+                            this_room.layout.append({'id': 0, 'name': 'MachineGunEnemy', 'x': x+40, 'y': y+40, 'width': 40, 'height': 40})
                 Check_List = list(dict.fromkeys(Check_List))
                 if room_count == 4:
                     room_count = 2

@@ -2,13 +2,13 @@ import pygame
  
 from bullets.EnemyProjectile import EnemyProjectile    
 
-class BossBullet(EnemyProjectile):
+class EnemyMachineGunBullet(EnemyProjectile):
     """This class is derived from EnemyProjectile class and 
-       contains settings for a bullet projectile shot by the boss.
+       contains settings for a bullet projectile shot by the MachineGunEnemy.
 
     """
     def __init__(self, game, enemy, pos, rotating=True):
-        """__init__ method for BossBullet class
+        """__init__ method for EnemyMachineGunBullet class
 
         Args:
             game (Integrate.Game): Integrate.Game class object.
@@ -16,7 +16,7 @@ class BossBullet(EnemyProjectile):
             pos (tuple length 2) : position of the player (x,y).
 
         """
-        self.image = game.imageLoader.item_img['BossBullet']           
+        self.image = game.imageLoader.item_img['EnemyMachineGunBullet']           
         super().__init__(game, enemy, pos)
         
         self.speed = 3
@@ -24,7 +24,3 @@ class BossBullet(EnemyProjectile):
         self.damage = 2
         self.anim_speed = 100
         self.hit_rect = pygame.Rect((0, 0), (int(5),int(5)))
-    
-
-    
-        

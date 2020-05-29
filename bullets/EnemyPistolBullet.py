@@ -1,12 +1,12 @@
 from bullets.EnemyProjectile import EnemyProjectile
 
-class MiniBossBullet(EnemyProjectile):
+class EnemyPistolBullet(EnemyProjectile):
     """This class is derived from EnemyProjectile class and 
        contains settings for a bullet projectile shot by a mini boss.
 
     """
     def __init__(self, game, enemy, pos, rotating=True):
-        """__init__ method for MiniBossBullet class
+        """__init__ method for EnemyPistolBullet class
 
         Args:
             game (Integrate.Game): Integrate.Game class object.
@@ -14,7 +14,7 @@ class MiniBossBullet(EnemyProjectile):
             pos (tuple length 2) : position of the player (x,y).
 
         """
-        self.image = game.imageLoader.item_img['MiniBossBullet']           
+        self.image = game.imageLoader.item_img['EnemyPistolBullet']           
         super().__init__(game, enemy, pos)
         
         self.speed = 3

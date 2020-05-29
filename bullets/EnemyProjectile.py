@@ -63,7 +63,7 @@ class EnemyProjectile(pygame.sprite.Sprite):
                 if wall.image == self.game.imageLoader.solid_img['crate']:
                     images = self.game.imageLoader.effects['crate_explosion']
                     Explosion(self.game, pygame.math.Vector2(self.pos), images, 80, damage = 0.2,
-                              sound=self.game.soundLoader.get['bomb'],
+                              sound=self.game.soundLoader.get['explosiveTank'],
                               hit_rect=pygame.Rect(images[0].get_rect().inflate(-6, -6)))
                     wall.kill()
             

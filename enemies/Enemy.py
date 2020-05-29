@@ -3,8 +3,7 @@ import random
 import math
 
 import Config as cfg
-from weapons.Sword import Sword
-from bullets.MiniBossBullet import MiniBossBullet
+from bullets.EnemyPistolBullet import EnemyPistolBullet
 from Item import Item
 
 UP = (0, -1)
@@ -56,7 +55,6 @@ class Enemy(pygame.sprite.Sprite):
         self.angle_to_player = 0
         self.shoot_time = 2 * cfg.FPS
         self.stun_timer = 0
-        self.SwordWeapon = Sword(self.game, self)
         self.SwordEnemymove = False
         self.zig1 = False
         self.zig2 = False
@@ -296,8 +294,8 @@ class Enemy(pygame.sprite.Sprite):
                 self.state = 'FIRING'
                 self.timer = 0
                 pos = self.pos + (dist.normalize() * cfg.TILESIZE)
-                MiniBossBullet(self.game, self, pos)
-                self.game.soundLoader.get['Laser01'].play()
+                EnemyPistolBullet(self.game, self, pos)
+                self.game.soundLoader.get['laserPistolShot'].play()
                 self.state = 'WALKING'
             
               

@@ -2,7 +2,7 @@ import pygame
 import random
 
 import Config as cfg
-from bullets.BossBullet import BossBullet
+from bullets.EnemyMachineGunBullet import EnemyMachineGunBullet
 from enemies.Enemy import Enemy
 
 UP = (0, -1)
@@ -10,20 +10,20 @@ DOWN = (0, 1)
 LEFT = (-1, 0)
 RIGHT = (1, 0)
 
-class Boss(Enemy):
+class MachineGunEnemy(Enemy):
     """This class is derived from Enemy class and 
-       contains settings for a Boss.
+       contains settings for a MachineGunEnemy.
 
     """
     def __init__(self, game, pos, *args, **kwargs):
-        """__init__ method for Boss class
+        """__init__ method for MachineGunEnemy class
 
         Args:
             game (Integrate.Game): Integrate.Game class object.
             pos (tuple length 2) : position of the player (x,y).
 
         """
-        self.name = 'Boss'
+        self.name = 'MachineGunEnemy'
         self.image_strip = game.imageLoader.enemy_img[self.name]
         self.walk_frames = {
             UP: [self.image_strip[0][0],self.image_strip[0][1],self.image_strip[0][2],self.image_strip[0][3],self.image_strip[0][4],self.image_strip[0][5]],
@@ -49,11 +49,11 @@ class Boss(Enemy):
         self.kb_intensity = 2
         self.maxSpeed = 1
         self.timer = 0
-        self.shoot_time = 1*cfg.FPS
+        self.shoot_time = 0.5*cfg.FPS
         self.stun_timer = 0
 
     def update(self):
-        """Boss class method to update.
+        """MachineGunEnemy class method to update.
 
         """
         # change the drawing layer in relation to the player
@@ -140,7 +140,7 @@ class Boss(Enemy):
         if self.state == 'FIRING' and self.game.player.MoveCheck == True:
             self.timer = 0
             pos = self.pos + (dist.normalize() * cfg.TILESIZE)
-            BossBullet(self.game, self, pos)
+            EnemyMachineGunBullet(self.game, self, pos)
             if self.timer >= self.shoot_time:
                 self.state = 'WALKING'
     

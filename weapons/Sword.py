@@ -80,7 +80,7 @@ class Sword(Weapon):
         
         if not self.fired:
             # play slash sound      
-            self.game.soundLoader.get['slash'].play()
+            self.game.soundLoader.get['swordSlash'].play()
             self.fired = True
             
     def reset(self):

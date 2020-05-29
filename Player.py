@@ -30,6 +30,8 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.group.add(self, layer=self.layer)
         self.game = game
+        self.flash_alpha = 50
+        self.hit_flash = 0
         
         # Machine Gun Walking/Attacking Animation
         if self.game.machinegunpick:
@@ -79,7 +81,6 @@ class Player(pygame.sprite.Sprite):
                 UP: [self.image_stripU[0]],
                 DOWN: [self.image_stripD[0]]
                 }
-
 
         self.image = self.idle_frames[DOWN][0]
         self.sound = self.game.soundLoader
@@ -295,6 +296,7 @@ class Player(pygame.sprite.Sprite):
             self.angle = self.angle + 90
         else:
             self.angle = self.angle
+
         
         self.image = pygame.transform.rotozoom(self.image, self.angle, 1)
         self.rect = self.image.get_rect()
@@ -364,6 +366,13 @@ class Player(pygame.sprite.Sprite):
         self.hp = max(0, min(self.hp, self.max_hp))
         if self.hp <= 0.8:
             self.destroy()
+
+        if self.hit_flash > 0 and self.hit_flash<15:
+            self.show_hit_flash()
+        elif self.hit_flash >= 10 and self.hit_flash <30:
+            self.hit_flash+=1
+        elif self.hit_flash >= 30 and self.hit_flash <45:
+            self.show_hit_flash()
 
 
     def collide_hit_rect(self, one, two):
@@ -436,11 +445,23 @@ class Player(pygame.sprite.Sprite):
             # flicker to indicate damage
             try:
                 alpha = next(self.damage_alpha)
-                self.image = self.lastimage.copy()
-                self.image.fill((255, 255, 255, alpha), 
-                                special_flags=pygame.BLEND_RGBA_MULT)
+                # self.image = self.lastimage.copy()
+                # self.image.fill((255, 255, 255, alpha), 
+                #                 special_flags=pygame.BLEND_RGBA_MULT)
             except:
                 self.state = 'IDLE'
+
+
+    def show_hit_flash(self):
+        """Player class method to flash on taking damage.
+
+        """
+        flash_color = (255, 255, 255, self.flash_alpha)
+        self.image.fill(flash_color, None, pygame.BLEND_RGBA_MULT)
+        if self.hit_flash == 44:
+            self.hit_flash = 0
+        else:
+            self.hit_flash +=1 
            
     
     def stun(self, time):
@@ -477,7 +498,26 @@ class Player(pygame.sprite.Sprite):
                 self.lastimage = self.image.copy()
                 self.damage_alpha = iter(cfg.DAMAGE_ALPHA * time)
                 self.state = 'HITSTUN'
-                
+
+    ###### UN USED FUNCTION - KEEPING FOR FUTURE REFERENCE
+    def recoil(self, bullet_pos):
+        """Player class method to produce player recoil on gun shot fire.
+
+        Args:
+            bullet_pos (tuple of 2): position of the bullet.
+
+        """
+        if self.state != 'HITSTUN':
+            self.vel = pygame.math.Vector2(0, 0)
+            # calculate position for the recoil
+            recoildir = self.pos - bullet_pos.pos
+            cfg.PLAYER_FRICTION = 0.2
+            if recoildir.length_squared() > 0:
+                recoildir = recoildir.normalize()
+                self.acc = recoildir * self.recoil_intensity
+                self.lastimage = self.image.copy()
+                self.state = 'HITSTUN'
+                    
                 
     def fillHearts(self):
         """Player class method to fill hearts if pickup.
