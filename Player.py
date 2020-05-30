@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.group.add(self, layer=self.layer)
         self.game = game
-        self.flash_alpha = 50
+        self.flash_alpha = 120
         self.hit_flash = 0
         
         # Machine Gun Walking/Attacking Animation

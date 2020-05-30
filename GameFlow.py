@@ -531,7 +531,7 @@ class Game:
             pygame.mouse.set_visible(True)
             self.actual_screen.blit(self.imageLoader.GameOverImg,(0,0))
             self.Quitbtn = Button(400, 450, 150, 50, 'Quit', (200,20,20,0), (180,0,0,0), self.imageLoader.font1, self.imageLoader.font2)
-            self.Nextbtn = Button(200, 450, 150, 50, 'Next', (200,20,20,0), (180,0,0,0), self.imageLoader.font1, self.imageLoader.font2)
+            self.Nextbtn = Button(200, 450, 150, 50, 'Restart', (200,20,20,0), (180,0,0,0), self.imageLoader.font1, self.imageLoader.font2)
             self.Quitbtn.show(self.imageLoader.GameOverImg)
             self.Nextbtn.show(self.imageLoader.GameOverImg)
             if self.Quitbtn.is_mouse_clicked():

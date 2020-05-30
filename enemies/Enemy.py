@@ -41,6 +41,9 @@ class Enemy(pygame.sprite.Sprite):
         self.lastdir = pygame.math.Vector2(DOWN)
         self.moveTo = None
         self.acc = pygame.math.Vector2(0, 0)
+        self.hit_flash = 0
+        self.flash_gap = 0
+        self.flash_alpha = 200
         self.friction = 0.1
         self.hp = 1
         self.damage = 0.5
@@ -350,6 +353,24 @@ class Enemy(pygame.sprite.Sprite):
             
         elif self.state == 'SWORD':
             self.image = self.game.imageLoader.item_img['sword']
+
+        if self.hit_flash > 0 and self.hit_flash<7:
+            self.show_hit_flash()
+        elif self.hit_flash >= 7 and self.hit_flash <33:
+            self.hit_flash+=1
+        elif self.hit_flash >= 33 and self.hit_flash <40:
+            self.show_hit_flash()
+
+    def show_hit_flash(self):
+        """Enemy class method to flash on taking damage.
+
+        """
+        flash_color = (255, 255, 255, self.flash_alpha)
+        self.image.fill(flash_color, None, pygame.BLEND_RGBA_MULT)
+        if self.hit_flash == 39:
+            self.hit_flash = 0
+        else:
+            self.hit_flash +=1 
 
     def collide_hit_rect(self, one, two):
         """Enemy class method to check if two objects are colliding.
