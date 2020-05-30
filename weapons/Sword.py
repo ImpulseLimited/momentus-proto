@@ -42,6 +42,12 @@ class Sword(Weapon):
         self.damage = 0.2
         self.kb_time = 1
         self.kb_intensity = 0.5
+        
+    def collide_hit_rect(self, one, two):
+        """Sword class method to check if two objects are colliding.
+
+        """
+        return one.hit_rect.colliderect(two.hit_rect)
 
     def update(self):
         """Sword class method to update.
@@ -54,13 +60,6 @@ class Sword(Weapon):
         if collide_hit_rect(checkplayer, self):
             checkplayer.knockback(self, self.kb_time, self.kb_intensity)
             checkplayer.hp -= self.damage
-        
-
-    def collide_hit_rect(self, one, two):
-        """Sword class method to check if two objects are colliding.
-
-        """
-        return one.hit_rect.colliderect(two.hit_rect)
 
     def use(self):
         """Sword class method to use the sword. 
